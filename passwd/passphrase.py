@@ -49,7 +49,7 @@ def generate(length):
     for i in range(length):
         if i != 0:
             passphrase += ' '
-        passphrase += '{}'.format(gen.choice(diceware8k.DICEWARE8K_WORDS))
+        passphrase += f'{gen.choice(diceware8k.DICEWARE8K_WORDS)}'
 
     return passphrase
 

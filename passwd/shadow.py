@@ -57,7 +57,7 @@ def generate_hash(passwd, method):
     try:
         return crypt.crypt(passwd, crypt.mksalt(HASH_METHODS[method.upper()]))
     except KeyError:
-        raise ValueError('Hash method {} not supported.'.format(method))
+        raise ValueError(f'Hash method {method} not supported.')
     except Exception as exception:
         raise exception
 

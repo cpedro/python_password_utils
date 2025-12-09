@@ -57,11 +57,11 @@ def lookup(passwd):
     sha1 = hashlib.sha1(passwd.encode('utf-8')).hexdigest().upper()
     head, tail = sha1[:5], sha1[5:]
 
-    url = API_URL + format(head)
+    url = f'{API_URL}{head}'
     req = requests.get(url)
     status_code = req.status_code
     if status_code != 200:
-        raise RuntimeError('Error fetching "{}": {}'.format(url, status_code))
+        raise RuntimeError(f'Error fetching "{url}": {status_code}')
 
     hashes = (line.split(':') for line in req.text.splitlines())
     count = next((int(count) for val, count in hashes if val == tail), 0)
